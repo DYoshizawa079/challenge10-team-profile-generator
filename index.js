@@ -9,7 +9,7 @@ const Engineer = require('./library/Engineer.js');
 const Manager = require('./library/Manager.js');
 
 //Answers to Questions array
-const newStaffData = [];
+const StaffData = [];
 
 // Uses the HTML template to generate the HTML file
 const createTeam = (answer) => {
@@ -63,15 +63,15 @@ const positionQs = async (answer) => {
         console.log(githubAnswer);
         createTeam(answer);
          
-        /* const newEngineer = new Engineer(
-            answer.email,
+        const newEngineer = new Engineer(
             answer.name,
+            answer.email,
             answer.id,
             answer.role,
-            githubAnswer,
+            githubAnswer.github,
         );
-        console.log(newEngineer); */
-        //newNewHireMemberData.push(newEngineer); 
+        console.log(newEngineer);
+        StaffData.push(newEngineer); 
 
     // If employee is a Manager
     } else if (answer.role === "Manager") {
@@ -84,15 +84,15 @@ const positionQs = async (answer) => {
         ])
         console.log(managerAnswer);
         createTeam(answer);
-        
-        /* const newManager = new Manager(
+        const newManager = new Manager(
             answer.name,
-            managerAnswer.officeNumber,
-            answer.id,
             answer.email,
+            answer.id,
+            answer.role,
+            managerAnswer.officeNumber,
         );
-        console.log(newManager); */
-        //newNewHireMemberData.push(newManager);
+        console.log(newManager);
+        StaffData.push(newManager);
 
     // If employee is an intern
     } else if (answer.role === "Intern") {
@@ -106,15 +106,17 @@ const positionQs = async (answer) => {
         console.log(internAnswer)
         createTeam(answer);
     
-        /* const newIntern = new Intern(
+        const newIntern = new Engineer(
             answer.name,
-            internAnswer.school,
-            answer.id,
             answer.email,
+            answer.id,
+            answer.role,
+            internAnswer.school,
         );
-        console.log(newIntern); */
-        //newNewHireMemberData.push(newIntern);
+        console.log(newIntern);
+        StaffData.push(newIntern); 
     }
+    console.log(StaffData)
 }
 
 /*const addNewMemberAnswer = inquirer

@@ -1,9 +1,10 @@
 const currentHire = require("./currentHire");
 
 class Manager extends currentHire {
-    constructor (id, name, officeNumber, email){
-        super(id, name, email)
-        this.officeNumber = officeNumber
+    constructor (name, email, id, role, officeNumber){
+        super(name, email, id)
+        this.role = role;
+        this.officeNumber = officeNumber;
     }
     getRole(){
         return "Manager"
