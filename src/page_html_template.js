@@ -2,27 +2,47 @@
 // This file generates the HTML code for the app
 
 // Generate the HTML code for an employee card
-// The parameter "answer" for this function is the answer that was collected by the Node.js prompts in index.js
-let generateEmployee = (answer) => {
-    return `
+// The parameter "StaffData" for this function is the StaffData that was collected by the Node.js prompts in index.js
+let generateEmployees = (StaffData) => {
+
+    let staffHTML = "";
+
+    StaffData.forEach(element => {
+        //staffHTML += "Test";
+        staffHTML += `
         <div class='employee'>
-            <h2>${answer.name}</h2>
-            <h3>Position: ${answer.role}</h3>
+            <h2>${element.name}</h2>
+            <h3>Position: ${element.role}</h3>
             <ul>
-                <li>ID: ${answer.id}</li>
-                <li>Email:<a href="mailto:${answer.email}"> ${answer.email}</a></li>
+                <li>ID: ${element.id}</li>
+                <li>Email:<a href="mailto:${element.email}"> ${element.email}</a></li>
                 <li>Misc:</li>
             </ul>
         </div>
-    `;
+        `;
+
+    });
+
+    return staffHTML;
+    /* return `
+        <div class='employee'>
+            <h2>${StaffData.name}</h2>
+            <h3>Position: ${StaffData.role}</h3>
+            <ul>
+                <li>ID: ${StaffData.id}</li>
+                <li>Email:<a href="mailto:${StaffData.email}"> ${StaffData.email}</a></li>
+                <li>Misc:</li>
+            </ul>
+        </div>
+    `; */
 }
 
-// The parameter "answer" for this function is the answer that was collected by the Node.js prompts in index.js
-let htmlCode = (answer) => {
+// The parameter "StaffData" for this function is the StaffData that was collected by the Node.js prompts in index.js
+let htmlCode = (StaffData) => {
 
     // Get the HTML code for an employee card by using the function that's generated above
     // The code that's collected will be used further down this function
-    let html = generateEmployee(answer);
+    let html = generateEmployees(StaffData);
     
     return `
 <!DOCTYPE html>

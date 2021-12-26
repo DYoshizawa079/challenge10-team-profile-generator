@@ -12,9 +12,13 @@ const Manager = require('./library/Manager.js');
 const StaffData = [];
 
 // Uses the HTML template to generate the HTML file
-const createTeam = (answer) => {
-    console.log ("new member", answer)
-    fs.writeFile("dist/index.html", html_markup(answer), err => err ? console.log(err) : console.log('HTML file created!')
+const createTeam = () => {
+    console.log("staffdata3",StaffData)
+    StaffData.forEach(element => {
+        console.log("===ELEMENT====")
+        console.log(element);
+    });
+    fs.writeFile("dist/index.html", html_markup(StaffData), err => err ? console.log(err) : console.log('HTML file created!')
     );
 } 
 
@@ -107,7 +111,7 @@ const positionQs = async (answer) => {
         console.log(internAnswer)
         //createTeam(answer);
     
-        const newIntern = new Engineer(
+        const newIntern = new Intern(
             answer.name,
             answer.email,
             answer.id,
@@ -117,8 +121,8 @@ const positionQs = async (answer) => {
         console.log(newIntern);
         StaffData.push(newIntern); 
     }
-    console.log(StaffData)
-    nextAction();
+    console.log("staffdata1",StaffData)
+    nextAction(StaffData);
 }
 
 // Prompt whether user wants to add intern or engineer or finish
@@ -157,30 +161,14 @@ const nextAction = async () => {
             
         } else {
             console.log("Generate html")
+            console.log("staffdata2",StaffData)
+            createTeam();
         }
 
     })
 
     
 }
-
-/*const addNewMemberAnswer = inquirer
-    .prompt([
-        {
-            type: "list",
-            name: "addNewMember",
-            message: "Please choose the following option.",
-            choices: ["Create a team", "Add new member"]
-        }
-    ])
-
-    if(addNewMemberAnswer.addNewMember === "Add new member") {
-    
-    }
-    // return createTeam ();
-*/
-    
-
 
 questions("Manager")
 
