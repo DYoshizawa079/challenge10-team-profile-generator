@@ -1,9 +1,10 @@
 const currentHire = require("./currentHire");
 
 class Engineer extends currentHire {
-  constructor (id, name, email, github) {
-    super (id, name, email)
-    this.github= github
+  constructor (name, email, id, role, github){
+    super(name, email, id)
+    this.role = role;
+    this.github = github;
   }
   promptRole() {
     return "Engineer"

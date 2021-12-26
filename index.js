@@ -61,7 +61,7 @@ const positionQs = async (answer) => {
             },  
         ])
         console.log(githubAnswer);
-        createTeam(answer);
+        //createTeam(answer);
          
         const newEngineer = new Engineer(
             answer.name,
@@ -83,7 +83,8 @@ const positionQs = async (answer) => {
             }, 
         ])
         console.log(managerAnswer);
-        createTeam(answer);
+        //createTeam(answer);
+
         const newManager = new Manager(
             answer.name,
             answer.email,
@@ -104,7 +105,7 @@ const positionQs = async (answer) => {
             },  
         ])
         console.log(internAnswer)
-        createTeam(answer);
+        //createTeam(answer);
     
         const newIntern = new Engineer(
             answer.name,
@@ -117,6 +118,50 @@ const positionQs = async (answer) => {
         StaffData.push(newIntern); 
     }
     console.log(StaffData)
+    nextAction();
+}
+
+// Prompt whether user wants to add intern or engineer or finish
+const nextAction = async () => {
+    /* Prompt whether you want to add intern or engineer or finish
+    - If user wants to add intern or engineer
+        - Run FUNCTION "Run basic prompt" (intern or engineer)
+    - Else If user wants to finish it
+        - Run FUNCTION: Generate HTML */
+
+    //Prompt whether you want to add intern or engineer or finish
+    const userSelection = await inquirer.prompt([
+        {
+            type: "list",
+            name: "nextAction",
+            message: "Please select what you would like to do next.",
+            choices: ["Add a new employee", "Finish"],
+        }
+    ])
+    .then((answers) => {
+
+        console.log(answers);
+        if (answers.nextAction === "Add a new employee") {
+            const newPosition = inquirer.prompt([
+                {
+                    type: "list",
+                    name: "position",
+                    message: "Please select the employee's position.",
+                    choices: ["Engineer", "Intern"],
+                }
+            ])
+            .then((answers) => {
+                console.log(answers.position);
+                questions(answers.position);
+            })
+            
+        } else {
+            console.log("Generate html")
+        }
+
+    })
+
+    
 }
 
 /*const addNewMemberAnswer = inquirer
