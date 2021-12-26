@@ -1,0 +1,61 @@
+BASIC STEPS
+------------
+
+//Run basic prompt
+//Run prompt for manager
+//Prompt whether you want to add intern or engineer or finish
+
+// --- IF user wants to add intern or engineer
+//Run basic prompt
+//Run prompt for engineer or intern
+//Ask whether user wants to add new employee
+//Prompt whether you want to add intern or engineer or finish
+
+// --- IF user wants to finish
+//Generate the HTML
+
+BREAKDOWN OF STEPS
+---------------
+
+- Set array that lists all employees
+- Run the next function with "manager" as position
+
+// FUNCTION: Run basic Prompt (position)
+- Recieve what position it's for
+- Run prompts with name of appropriate position
+- Run prompts specific to particular position
+- Create new object based on answers received from prompts
+- Push object to array
+- Run next function
+
+//FUNCTION: Prompt whether you want to add intern or engineer or finish
+- Prompt whether you want to add intern or engineer or finish
+- If user wants to add intern or engineer
+    - Run FUNCTION "Run basic prompt" with position name given in its parameter
+- If user wants to finish it
+    - Run next function
+
+//FUNCITON: Generate HTML
+
+FUNCTION ORDERS
+---------------
+// Load functions
+- FUNCTION: Run basic Prompt (position)
+    - Make prompts (use position)
+    - Run prompts specific to (use position)
+    - Create new object based on answers received from prompts
+    - Push object to array
+    - Run FUNCTION: Prompt whether you want to add intern or engineer or finish
+
+- FUNCTION: Prompt whether you want to add intern or engineer or finish
+    - Prompt whether you want to add intern or engineer or finish
+    - If user wants to add intern or engineer
+        - Run FUNCTION "Run basic prompt" (intern or engineer)
+    - Else If user wants to finish it
+        - Run FUNCTION: Generate HTML
+
+- FUNCTION: Generate HTML
+
+// Run this on script load
+- Set employee list array
+- FUNCTION: Run basic Prompt (manager)

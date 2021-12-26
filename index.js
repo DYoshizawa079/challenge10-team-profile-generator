@@ -19,29 +19,31 @@ const createTeam = (answer) => {
 } 
 
 //Array of questions asked to users
-const questions = async () => {
+const questions = async (position) => {
   const answer = await inquirer.prompt([
         {
             type: "input",
             name: "name",
-            message: "Please enter your name.",
+            message: "Please enter the name of the " + position + ".",
         },
         {
             type: "input",
             name: "email",
-            message: "Please enter your email.",
+            message: "Please enter the email address of the " + position + ".",
         },
         {
             type: "input",
             name: "id",
-            message: "Please enter your ID number.",
-        }, {
+            message: "Please enter your ID number of the " + position + ".",
+        }, 
+        /* {
             type: "list",
             name: "role",
             message: "Please select your role.",
             choices: ["Intern", "Engineer", "Manager"],
-        },
+        }, */
     ])
+    answer.role = position;
     console.log(answer);
     positionQs (answer);
 }
@@ -133,7 +135,5 @@ const positionQs = async (answer) => {
     
 
 
-questions()
+questions("Manager")
 
-//Run question1
-//Ask whether user wants to add new employee
