@@ -6,10 +6,10 @@ class Engineer extends currentHire {
     this.role = role;
     this.github = github;
   }
-  promptRole() {
+  getRole() {
     return "Engineer"
   }
-  promptGithub() {
+  getGithub() {
     return this.github
   }
 } 
