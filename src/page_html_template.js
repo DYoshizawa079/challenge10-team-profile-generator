@@ -66,7 +66,7 @@ let htmlCode = (StaffData) => {
         <script src="https://kit.fontawesome.com/c502137733.js"></script>
     </head>
 
-    <body>
+    <body class="bg-light">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 jumbotron mb-3 team-heading bg-primary text-white">
@@ -74,7 +74,7 @@ let htmlCode = (StaffData) => {
                 </div>
             </div>
         </div>
-        <div class="container d-flex justify-content-center bg-light">
+        <div class="container d-flex justify-content-center">
             ${html}
         </div>
     </body>

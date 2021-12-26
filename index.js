@@ -13,12 +13,7 @@ const StaffData = [];
 
 // Uses the HTML template to generate the HTML file
 const createTeam = () => {
-    console.log("staffdata3",StaffData)
-    StaffData.forEach(element => {
-        console.log("===ELEMENT====")
-        console.log(element);
-    });
-    fs.writeFile("dist/index.html", html_markup(StaffData), err => err ? console.log(err) : console.log('HTML file created!')
+    fs.writeFile("dist/index.html", html_markup(StaffData), err => err ? console.log(err) : console.log('HTML file created! See dist folder for the file.')
     );
 } 
 
@@ -40,15 +35,8 @@ const questions = async (position) => {
             name: "id",
             message: "Please enter your ID number of the " + position + ".",
         }, 
-        /* {
-            type: "list",
-            name: "role",
-            message: "Please select your role.",
-            choices: ["Intern", "Engineer", "Manager"],
-        }, */
     ])
     answer.role = position;
-    console.log(answer);
     positionQs (answer);
 }
 
@@ -64,8 +52,6 @@ const positionQs = async (answer) => {
             message: "Enter your Github user name.",
             },  
         ])
-        console.log(githubAnswer);
-        //createTeam(answer);
          
         const newEngineer = new Engineer(
             answer.name,
@@ -86,8 +72,6 @@ const positionQs = async (answer) => {
             message: "What is your office number?",
             }, 
         ])
-        console.log(managerAnswer);
-        //createTeam(answer);
 
         const newManager = new Manager(
             answer.name,
@@ -108,8 +92,6 @@ const positionQs = async (answer) => {
             message: "Enter in the name of the university you attented.",
             },  
         ])
-        console.log(internAnswer)
-        //createTeam(answer);
     
         const newIntern = new Intern(
             answer.name,
@@ -121,17 +103,11 @@ const positionQs = async (answer) => {
         console.log(newIntern);
         StaffData.push(newIntern); 
     }
-    console.log("staffdata1",StaffData)
     nextAction(StaffData);
 }
 
 // Prompt whether user wants to add intern or engineer or finish
 const nextAction = async () => {
-    /* Prompt whether you want to add intern or engineer or finish
-    - If user wants to add intern or engineer
-        - Run FUNCTION "Run basic prompt" (intern or engineer)
-    - Else If user wants to finish it
-        - Run FUNCTION: Generate HTML */
 
     //Prompt whether you want to add intern or engineer or finish
     const userSelection = await inquirer.prompt([
@@ -144,7 +120,6 @@ const nextAction = async () => {
     ])
     .then((answers) => {
 
-        console.log(answers);
         if (answers.nextAction === "Add a new employee") {
             const newPosition = inquirer.prompt([
                 {
@@ -155,13 +130,10 @@ const nextAction = async () => {
                 }
             ])
             .then((answers) => {
-                console.log(answers.position);
                 questions(answers.position);
             })
             
         } else {
-            console.log("Generate html")
-            console.log("staffdata2",StaffData)
             createTeam();
         }
 
