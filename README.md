@@ -1,6 +1,7 @@
 # Team Profile Generator
 ## Description
 This node.js command-line application will take in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person. 
+### [Click Here](https://drive.google.com/file/d/1rkqERvJtqvAe1JraqsdkaW8JBdY-9Te6/view) to see a demonstration video
 ## Installation
 Install this in a node.js environemnt that has the inquirer package installed.
 ## Usage

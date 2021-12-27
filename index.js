@@ -60,7 +60,6 @@ const positionQs = async (answer) => {
             answer.role,
             githubAnswer.github,
         );
-        console.log(newEngineer);
         StaffData.push(newEngineer); 
 
     // If employee is a Manager
@@ -80,7 +79,6 @@ const positionQs = async (answer) => {
             answer.role,
             managerAnswer.officeNumber,
         );
-        console.log(newManager);
         StaffData.push(newManager);
 
     // If employee is an intern
@@ -100,7 +98,6 @@ const positionQs = async (answer) => {
             answer.role,
             internAnswer.school,
         );
-        console.log(newIntern);
         StaffData.push(newIntern); 
     }
     nextAction(StaffData);
