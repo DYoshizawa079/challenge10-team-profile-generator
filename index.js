@@ -139,7 +139,6 @@ const nextAction = async () => {
 
     })
 
-    
 }
 
 questions("Manager")
